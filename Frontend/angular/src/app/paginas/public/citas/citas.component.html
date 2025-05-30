@@ -1,0 +1,39 @@
+
+<!-- Imagen de parallax -->
+<app-parallax></app-parallax>
+
+<!-- Sección de contacto -->
+<section id="inicio" class="section">
+  <div class="container">
+    <!-- Formulario de contacto -->
+    <div class="contact-form">
+      <h3 class="h3mensaje">Pide una cita</h3>
+      <form (ngSubmit)="addAppointment()" [formGroup]="addForm">
+        <label for="empleados">Elige tu estilista</label>
+        <select name="empleados" id="empleados" formControlName="empleados">
+          @for (item of employeeList; track item.id) {
+          <option value="{{ item.id }}">{{ item.usuario.nombre }}</option>
+          }
+        </select>
+
+        <ng-multiselect-dropdown formControlName="servicios"
+        [placeholder]="'servicios'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        ></ng-multiselect-dropdown>
+
+        <label for="fecha">Fecha</label>
+        <input   
+            type="datetime-local"
+            id="fecha"
+            name="fecha"
+            formControlName="fecha"
+        >
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Pie de página -->
+<app-footer></app-footer>

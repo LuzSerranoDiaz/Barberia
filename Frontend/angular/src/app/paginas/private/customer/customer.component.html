@@ -1,0 +1,258 @@
+<!-- <button (click)="loadClients()" style="margin-top: 150px">CLIENTES</button> -->
+
+<div style="padding-top: 150px">
+  <div class="container-fluid d-flex justify-content-center flex-column">
+    <div class="container-xl d-flex pb-3">
+      <button class="btn btn-primary btn-lg" data-bs-toggle="modal" [attr.data-bs-target]="'#addModal'">Añadir
+        cliente</button>
+    </div>
+
+    <div class="container-xl pb-3">
+      <form #updateFormLabel (ngSubmit)="loadClients()" [formGroup]="filterForm">
+        <div class="row">
+          <div class="d-flex justify-content-start flex-column col-auto">
+            <div class="row">
+              <div class="col-auto">
+                <input class="form-control" type="text" formControlName="nombre" placeholder="Nombre" />
+              </div>
+              <div class="col-auto">
+                <input class="form-control" formControlName="apellidos" placeholder="Apellidos" />
+              </div>
+              <div class="col-auto">
+                <input class="form-control" formControlName="tlf" placeholder="tlf" />
+              </div>
+            </div>
+
+            <div class="row pt-3">
+              <div class="col-auto">
+                <input class="form-control" type="text" formControlName="DNI" placeholder="DNI" />
+              </div>
+              <div class="col-auto">
+                <input class="form-control" type="email" formControlName="email" placeholder="Email" />
+              </div>
+              <div class="col-auto">
+                <input class="form-control" type="number" formControlName="pagina" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-auto d-flex align-items-end">
+            <input class="btn btn-dark" type="submit" value="Buscar" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+   <!--  <div class="container-xl pb-3">
+      @for (item of clientlist; track $index) {
+        <div class="hidden alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+           --><svg style="height:13px; display:none" class="px-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#a51d2d" d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+<!--           <div>
+             {{item.nombre}} {{item.apellidos}} ha sido eliminado
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      }
+    </div> -->
+
+    <!-- tabla -->
+    <div class="container-xl d-flex justify-content-center">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">NombreUsuario</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of clientlist; track $index) {
+          <tr data-bs-toggle="modal" [attr.data-bs-target]="'#infoModal'+item.id" class="Cliente-{{ item.id }}">
+            <th scope="row">{{ item.nombre + " " + item.apellidos }}</th>
+            <td>{{ item.nombreUsuario }}</td>
+            <td>{{ item.email }}</td>
+            <td>
+              <button (click)="delete(item.id)" class="btn btn-danger mx-2">
+                Borrar cliente
+              </button>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                [attr.data-bs-target]="'#updateModal'+item.id">
+                Actualizar cliente
+              </button>
+            </td>
+          </tr>
+
+          <div class="modal fade" id="infoModal{{ item.id }}" tabindex="-1"
+            [attr.aria-labelledby]="'infoModal'+item.id+'Label'" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="updateModal{{ item.id }}Label">{{ item.nombre }}
+                    {{item.apellidos}}</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <table class="table">
+                    <tr>
+                      <th scope="row">Nombre completo</th>
+                      <td>{{item.nombre}} {{item.apellidos}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Nombre de usuario</th>
+                      <td>{{item.nombreUsuario}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Telefono</th>
+                      <td>{{item.tlf}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Direccion</th>
+                      <td>{{item.municipio}} {{item.provincia}} {{item.provincia}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">DNI</th>
+                      <td>{{item.DNI}}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{{item.email}} </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Contraseña</th>
+                      <td>{{item.contrasena}}</td>
+                    </tr>
+                  </table>
+
+                </div>
+                <div class="modal-footer">
+                  <button (click)="delete(item.id)" class="btn btn-danger mx-2" data-bs-dismiss="modal">
+                    Borrar cliente
+                  </button>
+                  <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#updateModal'+item.id" >
+                    Actualizar cliente
+                  </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- modales de actualizaje -->
+  @for (item of clientlist; track $index) {
+  <div class="modal fade" id="updateModal{{ item.id }}" tabindex="-1"
+    [attr.aria-labelledby]="'updateModal'+item.id+'Label'" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="updateModal{{ item.id }}Label">Actualizar usuario {{ item.nombre }}
+            {{item.apellidos}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #updateFormLabel (ngSubmit)="update(item.id)" [formGroup]="updateForm">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="{{item.nombre}}" />
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" class="form-control" formControlName="apellidos"
+              placeholder="{{item.apellidos}}" />
+            <label for="nombreUsuario">Nombre de usuario</label>
+            <input type="text" id="nombreUsuario" class="form-control" formControlName="nombreUsuario"
+              placeholder="{{item.nombreUsuario}}" />
+            <label for="provincia">Provincia</label>
+            <input type="text" id="provincia" class="form-control" formControlName="provincia"
+              placeholder="{{ item.provincia }}" />
+            <label for="municipio">Municipio</label>
+            <input type="text" id="municipio" class="form-control" formControlName="municipio"
+              placeholder="{{item.provincia}}" />
+            <label for="direccion">Direccion</label>
+            <input type="text" id="direccion" class="form-control" formControlName="direccion"
+              placeholder="{{item.direccion}}" />
+            <label for="tlf">Telefono</label>
+            <input type="text" id="tlf" class="form-control" formControlName="tlf" placeholder="{{item.tlf}}" />
+            <label for="DNI">DNI</label>
+            <input type="text" id="DNI" class="form-control" formControlName="DNI" placeholder="{{item.DNI}}" />
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="{{item.email}}" />
+            <label for="password">Contraseña</label>
+            <input type="text" id="password" class="form-control" formControlName="contrasena"
+              placeholder="{{item.contrasena}}" />
+
+            <div class=" container-fluid d-flex flex-row-reverse">
+              <input class="button" class="btn btn-primary" data-bs-dismiss="modal" type="submit" value="Update" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  <!-- Modal de añadir -->
+  <div class="modal fade" id="addModal" tabindex="-1" [attr.aria-labelledby]="'addModal'" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addModalLabel">Añadir usuario</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #updateFormLabel (ngSubmit)="add()" [formGroup]="addForm">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" class="form-control" formControlName="apellidos" />
+            <label for="nombreUsuario">Nombre de usuario</label>
+            <input type="text" id="nombreUsuario" class="form-control" formControlName="nombreUsuario" />
+            <label for="provincia">Provincia</label>
+            <input type="text" id="provincia" class="form-control" formControlName="provincia" />
+            <label for="municipio">Municipio</label>
+            <input type="text" id="municipio" class="form-control" formControlName="municipio" />
+            <label for="direccion">Direccion</label>
+            <input type="text" id="direccion" class="form-control" formControlName="direccion" />
+            <label for="tlf">Telefono</label>
+            <input type="text" id="tlf" class="form-control" formControlName="tlf" />
+            <label for="DNI">DNI</label>
+            <input type="text" id="DNI" class="form-control" formControlName="DNI" />
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" />
+            <label for="password">Contraseña</label>
+            <input type="text" id="password" class="form-control" formControlName="contrasena" />
+            <label for="confirmPassword">Confirmar contraseña</label>
+            <input type="text" id="confirmPassword" class="form-control"
+              formControlName="contrasena_confirmation" />
+
+            <div class=" container-fluid d-flex flex-row-reverse">
+              <input class="button" class="btn btn-primary" data-bs-dismiss="modal" type="submit" value="Update" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--   <div id="addForm">
+    <h2>Añadir usuario</h2>
+    <form #updateFormLabel (ngSubmit)="add()" [formGroup]="addForm">
+      <input type="text" formControlName="nombre" placeholder="Nombre" />
+      <input type="text" formControlName="apellidos" placeholder="Apellidos" />
+      <input type="text" formControlName="nombreUsuario" placeholder="Nombre usuario" />
+      <input type="text" formControlName="provincia" placeholder="provincia" />
+      <input type="text" formControlName="municipio" placeholder="municipio" />
+      <input type="text" formControlName="direccion" placeholder="direccion" />
+      <input type="text" formControlName="tlf" placeholder="tlf" />
+      <input type="text" formControlName="DNI" placeholder="DNI" />
+      <input type="email" formControlName="email" placeholder="Email" />
+      <input type="password" formControlName="contrasena" placeholder="Password" />
+      <input type="password" formControlName="contrasena_confirmation" placeholder="Password" />
+      <input class="button" type="submit" value="Añadir" />
+    </form>
+  </div> -->
+
+</div>
+<app-footer />

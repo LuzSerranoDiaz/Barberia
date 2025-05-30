@@ -1,0 +1,133 @@
+<!-- <header>
+  
+  <a routerLink="/inicio">
+    <img
+      class="imagen"
+      src="img/LogoBarberia.png"
+      alt="Logo de la Peluquería"
+    />
+  </a>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  
+  <nav id="menu">
+    <ul>
+      <li><a routerLink="/inicio" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/equipo" routerLinkActive="active">Equipo</a></li>
+      <li>
+        <a routerLink="/servicios" routerLinkActive="active">Servicios</a>
+      </li>
+      <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+      <li><a routerLink="/acercaDe" routerLinkActive="active">Acerca de</a></li>
+      <li><a routerLink="/citas" routerLinkActive="active">Citas</a></li>
+      @if (isLoggedIn) {
+      <li>
+        <button
+          style="
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            font-family: 'Maxlock', sans-serif;
+            cursor: pointer;
+            outline: inherit;
+          "
+          (click)="logout()"
+        >
+          Logout
+        </button>
+      </li>
+      @if (isAdminBoolean) {
+      <li>
+        <div class="dropdown">
+          <button
+            class="dropbtn"
+            style="font-family: 'Maxlock', sans-serif; padding: 0 4px 0 4px"
+          >
+            ADMIN
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a routerLink="/admin/customer" routerLinkActive="active">Admin</a>
+            <a routerLink="/admin/customer" routerLinkActive="active">Admin</a>
+            <a routerLink="/admin/customer" routerLinkActive="active">Admin</a>
+          </div>
+        </div>
+      </li>
+      } } @else {
+      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li><a routerLink="/register" routerLinkActive="active">Registro</a></li>
+      }
+    </ul>
+  </nav>
+</header>
+ -->
+<header class="position-fixed container-fluid">
+  <!-- Logo con enlace a la portada -->
+  <div
+    class="container-fluid d-flex align-content-between align-items-center px-4 py-2"
+  >
+      <a routerLink="/inicio" class="flex-grow-1">
+        <img
+          class="imagen img-fluid rounded float-start"
+          src="img/LogoBarberia.png"
+          alt="Logo de la Peluquería"
+        />
+      </a>
+
+      <nav >
+        <ul class="d-flex align-content-between ">
+          <li><a class="fs-5" routerLink="/inicio" routerLinkActive="active">Inicio</a></li>
+          <li><a class="fs-5" routerLink="/equipo" routerLinkActive="active">Equipo</a></li>
+          <li>
+            <a class="fs-5" routerLink="/servicios" routerLinkActive="active">Servicios</a>
+          </li>
+          <li>
+            <a class="fs-5" routerLink="/contacto" routerLinkActive="active">Contacto</a>
+          </li>
+          <li>
+            <a class="fs-5" routerLink="/acercaDe" routerLinkActive="active">Acerca de</a>
+          </li>
+          <li><a class="fs-5" routerLink="/citas" routerLinkActive="active">Citas</a></li>
+          @if (isLoggedIn) {
+          <li>
+            <button
+            class="fs-5" 
+              (click)="logout()"
+            >
+              Logout
+            </button>
+          </li>
+          @if (isAdminBoolean) {
+            <li>
+              <div class="dropdown">
+                <a class="btn btn-primary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  ADMIN
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item text-dark" routerLink="/admin/customer" routerLinkActive="active">Clientes</a></li>
+                  <li><a class="dropdown-item text-dark" href="/admin/employee">Empleados</a></li>
+                  <li><a class="dropdown-item text-dark" href="/admin/appointments">Citas</a></li>
+                </ul>
+              </div> 
+            </li>
+            
+          } } @else {
+          <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+          <li>
+            <a routerLink="/register" routerLinkActive="active">Registro</a>
+          </li>
+          }
+        </ul>
+      </nav>
+    
+  </div> 
+</header>
+
+

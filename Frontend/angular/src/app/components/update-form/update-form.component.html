@@ -1,0 +1,24 @@
+<div>
+  <form #updateFormLabel [formGroup]="updateForm">
+    <!-- <input type="number" formControlName="id" placeholder="id" /> -->
+    <input type="text" formControlName="nombre" placeholder="Nombre" />
+    <input type="text" formControlName="apellidos" placeholder="Apellidos" />
+    <input
+      type="text"
+      formControlName="nombreUsuario"
+      placeholder="Nombre usuario"
+    />
+    <input type="text" formControlName="provincia" placeholder="provincia" />
+    <input type="text" formControlName="municipio" placeholder="municipio" />
+    <input type="text" formControlName="direccion" placeholder="direccion" />
+    <input type="tel" formControlName="tlf" placeholder="tlf" />
+    <input type="text" formControlName="DNI" placeholder="DNI" />
+    <input type="email" formControlName="email" placeholder="Email" />
+    <input
+      type="password"
+      formControlName="contrasena"
+      placeholder="Password"
+    />
+    <input class="button" (click)="update(+formId)" type="submit" value="Update" />
+  </form>
+</div>

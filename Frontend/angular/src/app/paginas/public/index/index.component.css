@@ -1,0 +1,75 @@
+.sectionIndex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 50px 30px;
+  background-color: #f8f8f8;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  h2 {
+    font-size: 35px;
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: "Maxlock", sans-serif;
+  }
+
+  p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: justify;
+  }
+}
+
+.contenido {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 80%;
+  margin: 0 auto;
+  .textoBarberia {
+    font-size: 22px;
+    color: #666;
+    margin-bottom: 30px;
+    h2 {
+      font-size: 40px;
+      color: #333;
+      margin-bottom: 40px;
+    }
+  }
+  /* Imagen barber */
+  img {
+    width: 700px;
+    height: auto;
+    border-radius: 2%;
+    transition: transform 0.5s ease;
+  }
+  img:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .contenido {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  .contenido .textoBarberia {
+    order: -1;
+    text-align: center;
+  }
+
+  .contenido img {
+    order: 1;
+    max-width: 100%;
+  }
+}

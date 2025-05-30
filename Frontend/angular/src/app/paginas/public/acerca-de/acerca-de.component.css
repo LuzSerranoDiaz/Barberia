@@ -1,0 +1,161 @@
+/*Fuentes de letras exportadas*/
+@font-face {
+  font-family: 'Maxlock';
+  src: url('../../../assets/maxlock/Maxlock.otf') format('truetype'),
+  url('../../../assets/maxlock/Maxlock.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Blenda-script';
+  src: url('../../../assets/blenda_script/Blenda\ Script.otf') format('truetype'),
+  url('../../../assets/blenda_script/Blenda\ Script.otf') format('opentype');
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Blenda-script", sans-serif;
+  }
+  
+  /* Efecto de fade-in al cargar la página */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+  }
+  
+  
+  .container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  
+    /* Boton de mas informacion */
+    .btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #db7704;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+  
+    .btn:active {
+      transform: scale(0.9);
+    }
+  
+    .btn:hover {
+      background-color: #b35f00;
+    }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .contenido {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 90%;
+    }
+  
+    .contenido .textoBarberia {
+      order: -1;
+      text-align: center;
+    }
+  
+    .contenido img {
+      order: 1;
+      max-width: 100%;
+    }
+  }
+  
+  /* Definición de la animación de desvanecimiento */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+
+/* Definición de la animación de aparición */
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilos responsivos para la sección "Acerca de" */
+  @media (max-width: 768px) {
+    .about {
+      padding: 20px;
+    }
+  
+    .about h1 {
+      font-size: 24px;
+    }
+  
+    .about p {
+      font-size: 16px;
+    }
+  }
+  
+  /* Estilos para la sección principal */
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+    /* Estilos para la sección "Acerca de" */
+    .about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s forwards;
+  
+      /*Estilos para la imagen */
+      .about-image {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 28px;
+        color: #222;
+        margin-bottom: 15px;
+      }
+  
+      p {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+      }
+    }
+  }
+  

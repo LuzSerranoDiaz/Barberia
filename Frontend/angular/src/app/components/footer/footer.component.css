@@ -1,0 +1,28 @@
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  
+    p {
+      font-size: 16px;
+      color: #bbb;
+    }
+  
+    a {
+      color: #e67e22;
+      text-decoration: none;
+    }
+  
+    a:hover {
+      text-decoration: underline;
+    }
+  
+    .PieDePagina {
+      color: #bbb;
+      text-decoration: none;
+    }
+  }

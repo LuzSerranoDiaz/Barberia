@@ -1,0 +1,141 @@
+/*Fuentes de letras exportadas*/
+@font-face {
+  font-family: "Maxlock";
+  src: url("../../../assets/maxlock/Maxlock.otf") format("truetype"),
+    url("../../../assets/maxlock/Maxlock.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Blenda-script";
+  src: url("../../../assets/blenda_script/Blenda\ Script.otf")
+      format("truetype"),
+    url("../../../assets/blenda_script/Blenda\ Script.otf") format("opentype");
+}
+
+/* Definición de la animación de desvanecimiento */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Blenda-script", sans-serif;
+}
+
+/* Efecto de fade-in al cargar la página */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  opacity: 0;
+  animation: fadeIn 1.5s forwards;
+}
+
+.container {
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+
+/* Estilos para las secciones */
+.section {
+  padding: 50px 30px;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+  justify-content: space-between;
+  padding: 50px;
+  background-color: white;
+  margin: 30px auto;
+  max-width: 1200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Estilos para el formulario de contacto y la información */
+  .contact-form {
+    width: 48%;
+    /* Estilos para el mensaje */
+    .h3mensaje {
+      text-align: center;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      font-family: "Maxlock", sans-serif;
+    }
+  }
+
+  /* Estilos para el formulario de contacto */
+  .contact-form {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    /* Estilos para el botón de envío */
+    button {
+      background-color: #e67e22;
+      color: white;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #d35400;
+    }
+  }
+}
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}

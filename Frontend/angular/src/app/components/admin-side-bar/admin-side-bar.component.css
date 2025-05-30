@@ -1,0 +1,26 @@
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 1;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  ul{
+
+  margin-top: 130px;
+
+  }
+  
+  
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+    a {
+        font-size: 18px;
+      }
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<app-head />
+<body>
+
+  <!-- Cuerpo de la pagina-->
+  <main>
+    <app-parallax></app-parallax>
+    <!-- Seccion de servicios de la peluqueria-->
+    <section class="section">
+      <h2 class="h2titulos">Nuestros Servicios</h2>
+      <p>
+        Ofrecemos una variedad de servicios para que luzcas siempre impecable.
+        Desde cortes clásicos hasta las últimas tendencias.
+      </p>
+      <div class="container">
+        <!-- Servicio Corte Pelo-->
+        <div class="service">
+          <h3>Corte al Gusto</h3>
+          <br />
+          <h3>10€</h3>
+          <br />
+          <button class="btn" onclick="openModal(1)">Más información</button>
+        </div>
+        <!--Servicio Barba-->
+        <div class="service">
+          <h3>Arreglo de Barba</h3>
+          <br />
+          <h3>7€</h3>
+          <br />
+          <button class="btn" onclick="openModal(2)">Más información</button>
+        </div>
+        <!--Servicio corteBarbaPelo-->
+        <div class="service">
+          <h3>Corte y Arreglo de Barba</h3>
+          <br />
+          <h3>15€</h3>
+          <button class="btn" onclick="openModal(3)">Más información</button>
+        </div>
+        <!--Servicio tinte-->
+        <div class="service">
+          <h3>Coloración y Tintes de Pelo</h3>
+          <br />
+          <h3>20€</h3>
+          <button class="btn" onclick="openModal(4)">Más información</button>
+        </div>
+      </div>
+    </section>
+    <app-comentarios></app-comentarios>
+  </main>
+  <app-footer></app-footer>
+
+  <!-- Parte de Modal -->
+
+  <!-- Modal Servicio Corte Pelo-->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal(1)">&times;</span>
+      <h2>Corte al Gusto</h2>
+      <img
+        src="../../../../assets/img/Servicios/cortePelo.png"
+        alt="Corte de pelo"
+      />
+      <p>Un corte tradicional y elegante para cualquier ocasión.</p>
+    </div>
+  </div>
+  <!-- Modal Servicio Barba-->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal(2)">&times;</span>
+      <h2>Arreglo de Barba</h2>
+      <img
+        src="../../../../assets/img/Servicios/CorteBarba.png"
+        alt="Corte de barba"
+      />
+      <p>
+        Definición y estilo para tu barba, con afeitado a navaja si lo prefieres
+      </p>
+    </div>
+  </div>
+  <!-- Modal Servicio corteBarbaPelo-->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal(3)">&times;</span>
+      <h2>Corte y Arreglo de Barba</h2>
+      <img
+        src="../../../../assets/img/Servicios/CorteBarbaPelo.png"
+        alt="Corte de pelo y barba"
+      />
+      <p>Las últimas tendencias en cortes y afeitados de barbas masculinos.</p>
+    </div>
+  </div>
+  <!-- Modal Servicio tinte-->
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal(4)">&times;</span>
+      <h2>Coloración y Tintes de Pelo</h2>
+      <img src="../../../../public/img/Servicios/tinte.png" alt="tinte" />
+      <p>Tintes y reflejos para un look renovado y moderno.</p>
+    </div>
+  </div>
+
+  <script>
+    //Declarciones
+    let lastScrollTop = 0;
+    let isScrolling;
+    const header = document.querySelector("header");
+
+    // Oculta y muestra el header al hacer scroll
+    window.addEventListener("scroll", function () {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        header.style.top = "-100px"; // Ajusta según el tamaño de tu cabecera
+      } else {
+        header.style.top = "0";
+      }
+
+      clearTimeout(isScrolling);
+      isScrolling = setTimeout(function () {
+        header.style.top = "0";
+      }, 1000);
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // Función para mostrar u ocultar el menú en móviles
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("active");
+    }
+    // Abrir la modal correspondiente
+    function openModal(index) {
+      const modal = document.getElementById(`modal${index}`);
+      const blur = document.getElementById("blur");
+      modal.style.display = "block";
+      blur.style.display = "block";
+    }
+
+    // Cerrar la modal correspondiente
+    function closeModal(index) {
+      const modal = document.getElementById(`modal${index}`);
+      const blur = document.getElementById("blur");
+      modal.style.display = "none";
+      blur.style.display = "none";
+    }
+    //Resetear los modal que estan abiertos
+    function resetAll() {
+      document
+        .querySelectorAll(".modal")
+        .forEach((modal) => (modal.style.display = "none"));
+      document.getElementById("blur").style.display = "none";
+    }
+  </script>
+</body>
+</html>

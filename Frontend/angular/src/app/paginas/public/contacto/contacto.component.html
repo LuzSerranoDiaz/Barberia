@@ -1,0 +1,136 @@
+
+
+    <main>
+      <!-- Imagen de parallax -->
+      <app-parallax></app-parallax>
+
+      <!-- Sección de contacto -->
+      <section id="inicio" class="section">
+        <div class="container">
+          <!-- Formulario de contacto -->
+          <div class="contact-form">
+            <h3 class="h3mensaje">Envíanos un mensaje</h3>
+            <form>
+              <input
+                type="email"
+                name="email"
+                placeholder="Tu correo electrónico"
+                required
+              />
+              <input type="text" name="subject" placeholder="Asunto" required />
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tu mensaje"
+                required
+              ></textarea>
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+
+          <!-- Información adicional -->
+          <div class="info-container">
+            <h2 class="h3mensaje">Más Información</h2>
+            <div class="info-item">
+              <p>
+                <strong
+                  ><img src="img/Contacta/edificios.png" alt="" width="25px" />
+                  Nombre de la Empresa:</strong
+                >
+                Peluquería Barbers
+              </p>
+              <p>
+                <strong
+                  ><img src="img/Contacta/ubicacion.png" alt="" width="25px" />
+                  Dirección:</strong
+                >
+                Paseo Marítimo, Aguadulce, Almería
+              </p>
+            </div>
+            <div class="info-item">
+              <p>
+                <strong
+                  ><img src="img/Contacta/telefono.png" alt="" width="25px" />
+                  Teléfono:</strong
+                ><br /><a href="tel:+34600123456">+34 600 123 456</a>
+              </p>
+              <p>
+                <strong
+                  ><img src="img/Contacta/correo.png" alt="" width="25px" />
+                  Correo Electrónico:</strong
+                >
+                <a href="danielcalvache057&#64;gmail.com"
+                  >info&#64;barbershop.com</a
+                >
+              </p>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="social-media">
+              <a href="https://instagram.com" target="_blank" rel="noopener"
+                ><img src="img/Contacta/instagram.png" alt="Instagram"
+              /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener"
+                ><img src="img/Contacta/gorjeo.png" alt="Twitter"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de mapa -->
+      <section id="mapa" class="section">
+        <h2 class="h2mapa">Ubicación</h2>
+        <div id="map"></div>
+      </section>
+    </main>
+
+    <!-- Pie de página -->
+    <app-footer></app-footer>
+
+    <!-- Script de Leaflet para el mapa -->
+    <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Función para alternar la visibilidad del menú en dispositivos móviles
+      function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("active");
+      }
+
+      // Inicialización del mapa con Leaflet en la ubicación de Aguadulce
+      var mapa = L.map("map").setView([36.811451, -2.569619], 16);
+
+      // Agregar capa de mapa de OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(mapa);
+
+      // Agregar marcador en la ubicación de la peluquería
+      L.marker([36.811451, -2.569619])
+        .addTo(mapa)
+        .bindPopup("Paseo Marítimo de Aguadulce, Almería")
+        .openPopup();
+
+      // Función para ocultar el header al hacer scroll hacia abajo y mostrarlo al subir
+      let lastScrollTop = 0;
+      let isScrolling;
+      const header = document.querySelector("header");
+      window.addEventListener("scroll", function () {
+        let scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop) {
+          header.style.top = "-100px";
+        } else {
+          header.style.top = "0";
+        }
+
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(function () {
+          header.style.top = "0";
+        }, 1000);
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      });
+    </script> -->
+
